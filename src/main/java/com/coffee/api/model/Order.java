@@ -30,4 +30,35 @@ public class Order {
         this.orderDate = orderDate;
         this.quantity = quantity;
     }
+
+    // gets order id
+    public Long getId() {
+        return id;
+    }
+
+    // sets order id
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    // gets order date
+    public LocalDate getOrderDate() {
+        return orderDate;
+    }
+
+    // sets order date
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    // gets order quantity
+    public int getQuantity() {
+        return quantity;
+    }
+
+    // sets order quantity
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
 }
