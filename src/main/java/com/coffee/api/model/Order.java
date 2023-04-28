@@ -7,6 +7,7 @@ import java.time.LocalDate;
 // SQL table name
 @Table(name = "orders")
 public class Order {
+
     // Creates a table with id, order date, quantity,
     @Id
     @Column
@@ -19,4 +20,14 @@ public class Order {
     @Column
     private int quantity;
 
+    // Default constructor
+    public Order() {
+    }
+
+    // Constructor
+    public Order(Long id, LocalDate orderDate, int quantity) {
+        this.id = id;
+        this.orderDate = orderDate;
+        this.quantity = quantity;
+    }
 }
