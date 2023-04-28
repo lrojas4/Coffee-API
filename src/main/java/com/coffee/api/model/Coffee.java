@@ -1,7 +1,6 @@
 package com.coffee.api.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 // SQL table name
@@ -18,7 +17,7 @@ public class Coffee {
     private String name;
 
     @Column
-    private String description;
+    private String size;
 
     @Column
     private String ingredients;
@@ -28,10 +27,10 @@ public class Coffee {
     }
 
     // Constructor
-    public Coffee(Long id, String name, String description, String ingredients) {
+    public Coffee(Long id, String name, String size, String ingredients) {
         this.id = id;
         this.name = name;
-        this.description = description;
+        this.size = size;
         this.ingredients = ingredients;
     }
 
@@ -55,22 +54,22 @@ public class Coffee {
         this.name = name;
     }
 
-    // gets coffee description
-    public String getDescription() {
-        return description;
+    // gets coffee size
+    public String getSize() {
+        return size;
     }
 
-    // sets coffee description
-    public void setDescription(String description) {
-        this.description = description;
+    // sets coffee size
+    public void setSize(String description) {
+        this.size = description;
     }
 
-    // gets a list of coffee ingredients
+    // gets coffee ingredients
     public String getIngredients() {
         return ingredients;
     }
 
-    // sets the list of coffee ingredients
+    // sets coffee ingredients
     public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
@@ -81,7 +80,7 @@ public class Coffee {
         return "Coffee{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+                ", description='" + size + '\'' +
                 ", ingredients=" + ingredients +
                 '}';
     }
