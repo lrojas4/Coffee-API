@@ -34,5 +34,11 @@ public class OrderController {
         return orderService.getOrder(orderId);
     }
 
+    // Creates an order
+    @PostMapping(path = "/orders/")
+    public Order createOrder(@RequestBody Order orderObject) {
+        return orderService.createOrder(orderObject);
+    }
+
 
 }
