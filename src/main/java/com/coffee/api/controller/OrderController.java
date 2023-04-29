@@ -28,4 +28,11 @@ public class OrderController {
         return orderService.getOrders();
     }
 
+    // Returns order by id
+    @GetMapping(path= "/orders/{orderId}/")
+    public Order getOrder(@PathVariable Long orderId) {
+        return orderService.getOrder(orderId);
+    }
+
+
 }
