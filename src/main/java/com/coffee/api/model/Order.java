@@ -15,6 +15,9 @@ public class Order {
     private Long id;
 
     @Column
+    private String name;
+
+    @Column
     private LocalDate orderDate;
 
     @Column
@@ -25,8 +28,9 @@ public class Order {
     }
 
     // Constructor
-    public Order(Long id, LocalDate orderDate, int quantity) {
+    public Order(Long id, String name, LocalDate orderDate, int quantity) {
         this.id = id;
+        this.name = name;
         this.orderDate = orderDate;
         this.quantity = quantity;
     }
@@ -39,6 +43,16 @@ public class Order {
     // sets order id
     public void setId(Long id) {
         this.id = id;
+    }
+
+    // gets order name
+    public String getName() {
+        return name;
+    }
+
+    // sets order name
+    public void setName(String name) {
+        this.name = name;
     }
 
     // gets order date
@@ -61,10 +75,12 @@ public class Order {
         this.quantity = quantity;
     }
 
+    // returns string representation
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", orderDate=" + orderDate +
                 ", quantity=" + quantity +
                 '}';
