@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 // A combination of @Controller and @ResponseBody annotations.
 // Eliminates the need for annotating each method with @ResponseBody
@@ -44,5 +45,11 @@ public class OrderController {
     @PutMapping(path = "/orders/{orderId}/")
     public Order updateOrder(@PathVariable Long orderId, @RequestBody Order orderObject) {
         return orderService.updateOrder(orderId, orderObject);
+    }
+
+    // Deletes order by order id
+    @DeleteMapping(path= "/orders/{orderId}/")
+    public Optional<Order> deleteOrder(@PathVariable Long orderId) {
+        return orderService.deleteOrder(orderId);
     }
 }
