@@ -40,5 +40,9 @@ public class OrderController {
         return orderService.createOrder(orderObject);
     }
 
-
+    // Updates an existing order
+    @PutMapping(path = "/orders/{orderId}/")
+    public Order updateOrder(@PathVariable Long orderId, @RequestBody Order orderObject) {
+        return orderService.updateOrder(orderId, orderObject);
+    }
 }
