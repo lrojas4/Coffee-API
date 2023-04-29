@@ -58,4 +58,16 @@ public class OrderService {
             throw new InformationNotFoundException("Order with id " + orderId + " not found");
         }
     }
+
+    // Deletes order by order id
+    public Optional<Order> deleteOrder(Long orderId) {
+        Optional<Order> order = orderRepository.findById(orderId);
+        if (order.isPresent()) {
+            orderRepository.deleteById(orderId);
+            return order;
+        } else {
+            throw new InformationNotFoundException("Order with id " + orderId + " not found");
+        }
+    }
+
 }
