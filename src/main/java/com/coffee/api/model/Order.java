@@ -1,5 +1,6 @@
 package com.coffee.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -30,6 +31,22 @@ public class Order {
     @OneToMany(mappedBy = "order", orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Coffee> coffeeList;
+
+    // Many-to-one relationship with user
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
+
+    // gets user
+    public User getUser() {
+        return user;
+    }
+
+    // sets user
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     // Default constructor
     public Order() {
