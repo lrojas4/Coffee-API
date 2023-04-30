@@ -1,8 +1,11 @@
 package com.coffee.api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 // SQL table name
@@ -33,6 +36,16 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private UserProfile userProfile;
+
+    // user can have more than one order
+    @OneToMany(mappedBy = "user")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Order> orderList;
+
+    // user can have more than one coffee
+    @OneToMany(mappedBy = "user")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Coffee> coffeeList;
 
     // Default constructor
     public User() {
@@ -84,6 +97,16 @@ public class User {
     // sets the user's password
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    // gets user profile
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    // sets user profile
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
     }
 
     // returns string representation
