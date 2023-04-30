@@ -57,10 +57,10 @@ public class OrderService {
 
     // Updates an existing order or throws an exception if order does not exist
     public Order updateOrder(Long orderId, Order orderObject) {
-        Optional<Order> order = orderRepository.findById(orderId);
-        if (order.isPresent()) {
-            if (orderObject.getName().equals(order.get().getName())) {
-                throw new InformationExistException("Order " + order.get().getName() + " already exists");
+        Order order = orderRepository.findByIdAndUserId(orderId, OrderService.getCurrentLoggedInUser().getId());
+        if (order != null) {
+            if (orderObject.getName().equals(order.getName())) {
+                throw new InformationExistException("Order" + order.getName() + " is already exists");
             } else {
                 Order updateOrder = orderRepository.findById(orderId).get();
                 updateOrder.setName(orderObject.getName());
@@ -69,7 +69,7 @@ public class OrderService {
                 return orderRepository.save(updateOrder);
             }
         } else {
-            throw new InformationNotFoundException("Order with id " + orderId + " not found");
+            throw new InformationNotFoundException("Order with id: " + orderId + "not found");
         }
     }
 
