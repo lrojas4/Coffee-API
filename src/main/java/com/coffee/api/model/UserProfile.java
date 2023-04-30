@@ -1,5 +1,7 @@
 package com.coffee.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,6 +22,11 @@ public class UserProfile {
 
     @Column
     private String profileDescription;
+
+    // adds one-to-one relationship with user
+    @JsonIgnore
+    @OneToOne(mappedBy = "userProfile")
+    private User user;
 
     // Default constructor
     public UserProfile() {
