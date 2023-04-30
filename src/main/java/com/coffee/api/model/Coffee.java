@@ -1,5 +1,7 @@
 package com.coffee.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,6 +23,12 @@ public class Coffee {
 
     @Column
     private String ingredients;
+
+    // Adds many-to-one relationship with Order
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     // Default constructor
     public Coffee() {
@@ -74,13 +82,23 @@ public class Coffee {
         this.ingredients = ingredients;
     }
 
+    // gets order
+    public Order getOrder() {
+        return order;
+    }
+
+    // sets order
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
     // returns string representation
     @Override
     public String toString() {
         return "Coffee{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + size + '\'' +
+                ", size='" + size + '\'' +
                 ", ingredients=" + ingredients +
                 '}';
     }
