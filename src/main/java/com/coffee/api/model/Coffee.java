@@ -30,6 +30,12 @@ public class Coffee {
     @JoinColumn(name = "order_id")
     private Order order;
 
+    // Adds many-to-one relationship with User
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
+
     // Default constructor
     public Coffee() {
     }
