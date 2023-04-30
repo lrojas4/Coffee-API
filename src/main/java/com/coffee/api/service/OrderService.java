@@ -17,7 +17,7 @@ public class OrderService {
     private OrderRepository orderRepository;
 
     @Autowired
-    public void setCategoryRepository(OrderRepository orderRepository) {
+    public void setOrderRepository(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
@@ -69,5 +69,4 @@ public class OrderService {
             throw new InformationNotFoundException("Order with id " + orderId + " not found");
         }
     }
-
 }
