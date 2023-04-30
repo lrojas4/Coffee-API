@@ -21,4 +21,7 @@ public class UserProfile {
     @Column
     private String profileDescription;
 
+    // Default constructor
+    public UserProfile() {
+    }
 }
