@@ -29,6 +29,11 @@ public class User {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
+    // Adds one-to-one relationship with UserProfile
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    private UserProfile userProfile;
+
     // Default constructor
     public User() {
     }
