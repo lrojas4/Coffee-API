@@ -7,6 +7,7 @@ import com.coffee.api.repository.CoffeeRepository;
 import com.coffee.api.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -50,4 +51,41 @@ public class CoffeeService {
             throw new InformationNotFoundException("Order with id " + orderId + " not found");
         }
     }
+
+    // Gets coffee based on coffee id and order id
+    public Coffee getCoffee (@PathVariable Long orderId, @PathVariable Long coffeeId) {
+        Optional<Order> order = orderRepository.findById(orderId);
+        if (order.isPresent()) {
+            Optional<Coffee> coffee = coffeeRepository.findByOrderId(
+                    orderId).stream().filter(r -> r.getId().equals(coffeeId)).findFirst();
+            if(coffee.isPresent()){
+                return coffee.get();
+            } else {
+                throw new InformationNotFoundException("Coffee with id  " + coffeeId + " not found");
+            }
+        } else {
+            throw new InformationNotFoundException("Order with id " + orderId + " not found");
+        }
+    }
+
+    public Coffee updateCoffee(@PathVariable Long orderId, @PathVariable Long coffeeId, @PathVariable Coffee coffeeObject) {
+        try {
+            Coffee coffee = (coffeeRepository.findByOrderId(
+                    orderId).stream().filter(p -> p.getId().equals(coffeeId)).findFirst()).get();
+            coffee.setName(coffeeObject.getName());
+            coffee.setSize(coffeeObject.getSize());
+            coffee.setIngredients(coffeeObject.getIngredients());
+            return coffeeRepository.save(coffee);
+        } catch (NoSuchElementException e) {
+            throw new InformationNotFoundException("Coffee or order not found");
+        }
+
+    }
+
+
+
+
+
+
+
 }
