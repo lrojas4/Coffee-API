@@ -3,8 +3,11 @@ package com.coffee.api.service;
 import com.coffee.api.exception.InformationExistException;
 import com.coffee.api.exception.InformationNotFoundException;
 import com.coffee.api.model.Order;
+import com.coffee.api.model.User;
 import com.coffee.api.repository.OrderRepository;
+import com.coffee.api.security.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,14 +24,24 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
+    public static User getCurrentLoggedInUser() {
+        MyUserDetails userDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return userDetails.getUser();
+    }
+
     // Returns a list of all orders
     public List<Order> getOrders() {
         return orderRepository.findAll();
     }
 
     // Returns order by id
-    public Order getOrder(@PathVariable Long orderId) {
-        return orderRepository.findById(orderId).orElse(null);
+    public Optional<Order> getOrder(Long orderId) {
+        Order order = orderRepository.findByIdAndUserId(orderId,OrderService.getCurrentLoggedInUser().getId());
+        if (order == null) {
+            throw new InformationNotFoundException("Order with id " + orderId + " not found");
+        } else {
+            return Optional.of(order);
+        }
     }
 
     // Creates and order if order doesn't already exista
