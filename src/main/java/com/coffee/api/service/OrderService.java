@@ -46,10 +46,11 @@ public class OrderService {
 
     // Creates and order if order doesn't already exista
     public Order createOrder(@RequestBody Order orderObject) {
-        Order order= orderRepository.findByName(orderObject.getName());
+        Order order= orderRepository.findByUserIdAndName(OrderService.getCurrentLoggedInUser().getId(), orderObject.getName());
         if (order != null) {
             throw new InformationExistException("Order with that name already exists ");
         } else {
+            orderObject.setUser(getCurrentLoggedInUser());
             return orderRepository.save(orderObject);
         }
     }
