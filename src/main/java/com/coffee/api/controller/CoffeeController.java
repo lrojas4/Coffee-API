@@ -47,4 +47,10 @@ public class CoffeeController {
         return coffeeService.updateCoffee(orderId, coffeeId, coffeeObject);
     }
 
+    // Deletes coffee by coffee id from order by order id
+    @DeleteMapping(path = "/orders/{orderId}/coffees/{coffeeId}" )
+    public Coffee deleteCoffee(@PathVariable Long orderId, @PathVariable Long coffeeId) {
+        return coffeeService.deleteCoffee(orderId, coffeeId);
+    }
+
 }
