@@ -1,8 +1,10 @@
 package com.coffee.api.controller;
 
 import com.coffee.api.model.User;
+import com.coffee.api.model.request.LoginRequest;
 import com.coffee.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,12 @@ public class UserController {
     @PostMapping(path = "/register/")
     public User createUser(@RequestBody User userObject) {
         return userService.createUser(userObject);
+    }
+
+    // logins user
+    @PostMapping("/login/")
+    public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest) {
+        return userService.loginUser(loginRequest);
     }
 
 
