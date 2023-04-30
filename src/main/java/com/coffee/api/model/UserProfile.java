@@ -24,4 +24,12 @@ public class UserProfile {
     // Default constructor
     public UserProfile() {
     }
+
+    // Constructor
+    public UserProfile(Long id, String firstName, String lastName, String profileDescription) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.profileDescription = profileDescription;
+    }
 }
