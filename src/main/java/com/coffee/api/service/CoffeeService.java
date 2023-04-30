@@ -79,13 +79,20 @@ public class CoffeeService {
         } catch (NoSuchElementException e) {
             throw new InformationNotFoundException("Coffee or order not found");
         }
-
     }
 
-
-
-
-
-
-
+    public Coffee deleteCoffee(@PathVariable Long orderId, @PathVariable Long coffeeId) {
+        Optional<Order> order = orderRepository.findById(orderId);
+        if (order.isPresent()) {
+            Optional<Coffee> coffee = coffeeRepository.findByOrderId(orderId).stream().filter(r -> r.getId().equals(coffeeId)).findFirst();
+            if (coffee.isPresent()) {
+                coffeeRepository.delete(coffee.get());
+                return coffee.get();
+            } else {
+                throw new InformationNotFoundException("Coffee with id  " + coffeeId + " not found");
+            }
+        } else {
+            throw new InformationNotFoundException("Order with id " + orderId + " not found");
+        }
+    }
 }
