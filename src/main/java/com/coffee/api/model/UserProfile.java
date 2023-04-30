@@ -80,6 +80,16 @@ public class UserProfile {
         this.profileDescription = profileDescription;
     }
 
+    // gets user
+    public User getUser() {
+        return user;
+    }
+
+    // sets user
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     // returns string representation
     @Override
     public String toString() {
