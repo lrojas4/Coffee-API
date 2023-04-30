@@ -32,4 +32,44 @@ public class UserProfile {
         this.lastName = lastName;
         this.profileDescription = profileDescription;
     }
+
+    // gets user profile id
+    public Long getId() {
+        return id;
+    }
+
+    // sets user profile id
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    // gets user profile first name
+    public String getFirstName() {
+        return firstName;
+    }
+
+    // sets user profile first name
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    // gets user profile last name
+    public String getLastName() {
+        return lastName;
+    }
+
+    // sets user profile last name
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    // gets user profile description
+    public String getProfileDescription() {
+        return profileDescription;
+    }
+
+    // sets user profile description
+    public void setProfileDescription(String profileDescription) {
+        this.profileDescription = profileDescription;
+    }
 }
