@@ -1,9 +1,7 @@
 package com.coffee.api.controller;
 
 import com.coffee.api.model.Coffee;
-import com.coffee.api.repository.OrderRepository;
 import com.coffee.api.service.CoffeeService;
-import com.coffee.api.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
