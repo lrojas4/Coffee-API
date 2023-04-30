@@ -1,7 +1,11 @@
 package com.coffee.api.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 // SQL table name
@@ -22,6 +26,10 @@ public class Order {
 
     @Column
     private int quantity;
+
+    @OneToMany(mappedBy = "order", orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Coffee> coffeeList;
 
     // Default constructor
     public Order() {
@@ -73,6 +81,14 @@ public class Order {
     // sets order quantity
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public List<Coffee> getCoffeeList() {
+        return coffeeList;
+    }
+
+    public void setCoffeeList(List<Coffee> coffeeList) {
+        this.coffeeList = coffeeList;
     }
 
     // returns string representation
