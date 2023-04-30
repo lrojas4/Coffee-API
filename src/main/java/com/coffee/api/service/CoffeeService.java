@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -40,4 +41,13 @@ public class CoffeeService {
         }
     }
 
+    // gets coffees from orders
+    public List<Coffee> getCoffees(Long orderId) {
+        Optional<Order> order = orderRepository.findById(orderId);
+        if (order.isPresent()) {
+            return order.get().getCoffeeList();
+        } else {
+            throw new InformationNotFoundException("Order with id " + orderId + " not found");
+        }
+    }
 }
