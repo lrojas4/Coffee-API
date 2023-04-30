@@ -27,6 +27,7 @@ public class UserService {
     private MyUserDetails myUserDetails;
 
     // Constructor
+    @Autowired
     public UserService(UserRepository userRepository, @Lazy PasswordEncoder passwordEncoder, JWTUtils jwtUtils,
                        @Lazy AuthenticationManager authenticationManager, @Lazy MyUserDetails myUserDetails) {
         this.userRepository = userRepository;
