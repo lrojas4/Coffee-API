@@ -10,11 +10,8 @@ A coffee order API built using Spring Boot and Java.
 * PostgreSQL
 * Postman  
 
-## User Stories
-
-
 ## Acknowledgements
-[Spring Boot Annotations](https://www.baeldung.com/spring-boot-annotations)
+* [Spring Boot Annotations](https://www.baeldung.com/spring-boot-annotations)
 
 
 
