@@ -10,7 +10,7 @@ A coffee order API built using Spring Boot and Java.
 * PostgreSQL
 * Postman  
 
-# API Endpoints
+## API Endpoints
 
 | Request Type | URL                                   | Functionality                                           | Access  |
 |--------------|---------------------------------------|---------------------------------------------------------|---------|
@@ -24,7 +24,7 @@ A coffee order API built using Spring Boot and Java.
 | GET          | /orders/{orderId}/coffees/            | Lists all coffees in the given order                    | PRIVATE |
 | GET          | /orders/{orderId}/coffees/{coffeeId}/ | Gets a coffee with the supplied id from the given order | PRIVATE |
 | POST         | /orders/{orderId}/                    | Creates a new recipe in the given order                 | PRIVATE |
-| PUT          | /orders/{orderId}/coffees/{coffeeId}  | Updates a coffee in the given order                     | PRIVATE |
+| PUT          | /orders/{orderId}/coffees/{coffeeId}/ | Updates a coffee in the given order                     | PRIVATE |
 | DELETE       | /orders/{orderId}/coffees/{coffeeId}/ | Deletes a coffee in the given order                     | PRIVATE |
 
 ## Acknowledgements
