@@ -1,8 +1,14 @@
 # Coffee API
-## Overview
+## Table of Contents
+1. [Overview](#overview)  
+2. [Tools and Technologies Used](#tools-and-technologies-used)  
+3. [API Endpoints](#api-endpoints)  
+4. [Acknowledgements](#acknowledgements)  
+
+## Overview <a name="overview"></a>
 A coffee order API built using Spring Boot and Java. 
 
-## Tools and Technologies Used
+## Tools and Technologies Used <a name="tools-and-technologies-used"></a>
 * Java
 * IDE - IntelliJ IDEA
 * Spring Boot
@@ -10,11 +16,11 @@ A coffee order API built using Spring Boot and Java.
 * PostgreSQL
 * Postman  
 
-## API Endpoints
+## API Endpoints <a name="api-endpoints"></a>
 
 | Request Type | URL                                   | Functionality                                           | Access  |
 |--------------|---------------------------------------|---------------------------------------------------------|---------|
-| POST         | auth/users/register/                  | Registers a user                                        | PUBLIC  |
+| POST         | /auth/users/register/                 | Registers a user                                        | PUBLIC  |
 | POST         | /auth/users/login/                    | Logs a user in                                          | PUBLIC  |
 | GET          | /api/orders/                          | Lists all orders                                        | PRIVATE |
 | GET          | /api/orders/{orderId}/                | Gets a single order with the suplied id                 | PRIVATE |
@@ -27,7 +33,7 @@ A coffee order API built using Spring Boot and Java.
 | PUT          | /orders/{orderId}/coffees/{coffeeId}/ | Updates a coffee in the given order                     | PRIVATE |
 | DELETE       | /orders/{orderId}/coffees/{coffeeId}/ | Deletes a coffee in the given order                     | PRIVATE |
 
-## Acknowledgements
+## Acknowledgements <a name="acknowledgements"></a>
 * [Spring Boot Annotations](https://www.baeldung.com/spring-boot-annotations)
 
 
