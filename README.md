@@ -1,9 +1,9 @@
 # Coffee API
 ## Table of Contents
-1. [Overview](#overview)  
-2. [Tools and Technologies Used](#tools-and-technologies-used)  
-3. [API Endpoints](#api-endpoints)  
-4. [Acknowledgements](#acknowledgements)  
+* [Overview](#overview)  
+* [Tools and Technologies Used](#tools-and-technologies-used)  
+* [API Endpoints](#api-endpoints)  
+* [Acknowledgements](#acknowledgements)  
 
 ## Overview <a name="overview"></a>
 A coffee order API built using Spring Boot and Java. 
